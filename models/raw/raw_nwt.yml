@@ -8,6 +8,12 @@ sources:
         description: 'Description of the CUSTOMER table'
       - name: REGION
         description: 'Description of the REGION table'
+      - name: ORDERS
+        description: 'Description of the ORDERS table'
+      - name: ORDERDETAIL
+        description: 'Description of the ORDERDETAIL table'
+      - name: PRODUCT
+        description: 'Description of the PRODUCT table'
     config:
       database: 'ASGGGGGGGG'
       
