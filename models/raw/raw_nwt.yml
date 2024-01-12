@@ -14,6 +14,12 @@ sources:
         description: 'Description of the ORDERDETAIL table'
       - name: PRODUCT
         description: 'Description of the PRODUCT table'
+      - name: SHIPPER 
+        description: 'Description of the SHIPPER table'
+      - name: SUPPLIER 
+        description: 'Description of the SUPPLIER table'
+      - name: TERRITORY 
+        description: 'Description of the TERRITORY table'
     config:
       database: 'ASGGGGGGGG'
       
