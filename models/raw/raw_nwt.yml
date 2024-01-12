@@ -20,6 +20,12 @@ sources:
         description: 'Description of the SUPPLIER table'
       - name: TERRITORY 
         description: 'Description of the TERRITORY table'
+      - name: CATEGORY 
+        description: 'Description of the CATEGORY table'
+      - name: EMPLOYEE 
+        description: 'Description of the EMPLOYEE table'
+      - name: EMPLOYEETERRITORY 
+        description: 'Description of the EMPLOYEETERRITORY table'
     config:
       database: 'ASGGGGGGGG'
       
