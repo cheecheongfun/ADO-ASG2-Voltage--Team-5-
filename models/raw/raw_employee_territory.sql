@@ -1,4 +1,4 @@
 {{ config (materialized='table')}}
 SELECT * 
 FROM 
-{{source('NWT','EMPLOYEE_TERRITORY')}}
+{{source('NWT','EMPLOYEETERRITORY')}}
