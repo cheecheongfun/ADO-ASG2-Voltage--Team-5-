@@ -6,6 +6,8 @@ sources:
     tables:
       - name: CUSTOMER
         description: 'Description of the CUSTOMER table'
+      - name: REGION
+        description: 'Description of the REGION table'
     config:
       database: 'ASGGGGGGGG'
       
