@@ -1,4 +1,4 @@
 {{ config (materialized='table')}}
-SELECT *
-FROM
+SELECT * 
+FROM 
 {{source('NWT','CUSTOMER')}}
