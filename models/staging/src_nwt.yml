@@ -1,0 +1,18 @@
+version: 2
+
+sources:
+  - name: NWT
+    database: ASGGGGGGGG
+    schema: NWT
+    tables:
+      - name: CUSTOMER
+      - name: REGION
+      - name: ORDERS
+      - name: ORDERDETAIL
+      - name: PRODUCT
+      - name: SHIPPER 
+      - name: SUPPLIER 
+      - name: TERRITORY 
+      - name: CATEGORY 
+      - name: EMPLOYEE 
+      - name: EMPLOYEETERRITORY 
