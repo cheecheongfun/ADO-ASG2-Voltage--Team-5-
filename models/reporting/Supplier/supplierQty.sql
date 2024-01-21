@@ -1,6 +1,3 @@
-SELECT companyName,
-       productName ,
-       productID,
-       totalSales As TotalQtySold
+SELECT *
 FROM 
     {{ref('stg_supplierSales')}} 
