@@ -5,4 +5,4 @@ SELECT
   city,
   address
 FROM 
-  {{ref('raw_customer')}}
+  {{ref('stg_customer')}}
