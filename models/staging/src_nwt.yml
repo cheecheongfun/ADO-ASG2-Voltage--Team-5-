@@ -16,3 +16,12 @@ sources:
       - name: CATEGORY 
       - name: EMPLOYEE 
       - name: EMPLOYEETERRITORY 
+      - name: ORDER_FRESH
+        description: fresh orders to be appended into ORDERS table
+        columns:
+          - name: ORDERID
+      - name: ORDERDETAIL_FRESH
+        description: fresh orders_detail to be appended into ORDERDETAILS table
+        columns:
+          - name: ORDERID
+          
