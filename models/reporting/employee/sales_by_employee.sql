@@ -20,6 +20,3 @@ SELECT
   group by se.employeeID
 
 
-
---{{ ref ('raw_order_details')}}
-
