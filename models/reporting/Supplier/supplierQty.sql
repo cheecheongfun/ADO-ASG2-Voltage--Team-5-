@@ -1,8 +1,9 @@
 SELECT companyname, 
+        supplierID,
        sum(TotalQtySold) AS QuantitySold
 FROM 
     {{ref('stg_supplierSales')}} 
 GROUP BY 
-    companyname
+    companyname, supplierID
 ORDER BY 
     QuantitySold DESC
