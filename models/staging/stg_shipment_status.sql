@@ -13,8 +13,8 @@ SELECT DISTINCT
     ShippedDate,
     CASE WHEN RequiredDate < ShippedDate THEN 'Late' ELSE 'On-time' END AS Status,
     DATEDIFF(days, OrderDate, ShippedDate) AS DaysToShip,
-    CASE WHEN DATEDIFF(days, ShippedDate, RequiredDate) < 7 THEN '1'ELSE '0' END AS Red,
-    CASE WHEN DATEDIFF(days, ShippedDate, RequiredDate) > 7 THEN '1' ELSE '0' END AS Green
+    CASE WHEN DATEDIFF(days, ShippedDate, RequiredDate) < 7 THEN 1 ELSE 0 END AS Red,
+    CASE WHEN DATEDIFF(days, ShippedDate, RequiredDate) > 7 THEN 1 ELSE 0 END AS Green
 
 FROM 
     {{ ref('raw_orders') }} o 
