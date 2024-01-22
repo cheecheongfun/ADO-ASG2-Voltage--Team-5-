@@ -1,6 +1,7 @@
 SELECT companyname, 
-        supplierID,
-       sum(TotalQtySold) AS QuantitySold
+       supplierID,
+       sum(TotalQtySold) AS QuantitySold,
+       sum(Revenue) AS netSales
 FROM 
     {{ref('stg_supplierSales')}} 
 GROUP BY 
