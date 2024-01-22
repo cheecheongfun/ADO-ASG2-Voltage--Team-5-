@@ -3,7 +3,7 @@ select orderID ,
        CompanyName AS Courier, 
        Status, 
        Daystoship AS LeadTime, 
-       CAST(shippeddate AS DATE) AS ShippedDate,
+       CAST(OrderDate AS DATE) AS OrderedOn,
        Red, 
        Green
 from {{ref ('stg_shipment_status')}}
