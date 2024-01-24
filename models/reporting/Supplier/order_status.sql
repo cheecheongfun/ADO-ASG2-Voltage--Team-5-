@@ -4,9 +4,7 @@ SELECT
   CompanyName AS Courier,
   Status,
   Daystoship AS ProcessingTime,
-  CAST(EXTRACT(DAY FROM CAST(OrderDate AS DATE)) AS INT) AS OrderDay,
-  CAST(EXTRACT(MONTH FROM CAST(OrderDate AS DATE)) AS INT) AS OrderMonth,
-  CAST(EXTRACT(YEAR FROM CAST(OrderDate AS DATE)) AS INT) AS OrderYear,
+  CAST(OrderDate AS DATE) AS OrderDate,
   Red,
   Green
 FROM
