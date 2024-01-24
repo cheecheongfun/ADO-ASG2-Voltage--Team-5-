@@ -1,6 +1,7 @@
 Select p.productName ,
 	   p.productID,
-	   od.netsales,
-       od.quantity AS QuantitySold
+	   sum(od.revenue) as Revenue,
+       p.unitprice*quantity as CostPrice
 FROM {{ref('raw_product')}} p 
 INNER JOIN {{ref('stg_order_detail')}} od on p.productid = od.productid 
+GROUP BY p.productName, p.productID ,CostPrice
