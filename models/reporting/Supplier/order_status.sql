@@ -3,7 +3,7 @@ SELECT
   shipcountry AS Country,
   CompanyName AS Courier,
   Status,
-  Daystoship AS LeadTime,
+  Daystoship AS ProcessingTime,
   CAST(EXTRACT(DAY FROM CAST(OrderDate AS DATE)) AS INT) AS OrderDay,
   CAST(EXTRACT(MONTH FROM CAST(OrderDate AS DATE)) AS INT) AS OrderMonth,
   CAST(EXTRACT(YEAR FROM CAST(OrderDate AS DATE)) AS INT) AS OrderYear,
