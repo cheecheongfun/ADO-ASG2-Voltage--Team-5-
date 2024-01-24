@@ -2,7 +2,7 @@ SELECT companyname,
        country,
        supplierID,
        sum(TotalQtySold) AS QuantitySold,
-       sum(Revenue) AS netSales
+       sum(Revenue) AS Revenue
 FROM 
     {{ref('stg_supplier')}} 
 GROUP BY 
