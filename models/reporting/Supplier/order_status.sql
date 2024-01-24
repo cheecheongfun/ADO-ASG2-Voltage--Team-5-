@@ -11,5 +11,3 @@ SELECT
   Green
 FROM
   {{ ref('stg_shipment_status') }}
-
--- hello -- 
