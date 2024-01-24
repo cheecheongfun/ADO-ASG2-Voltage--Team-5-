@@ -4,9 +4,9 @@ SELECT
   CompanyName AS Courier,
   Status,
   Daystoship AS LeadTime,
-  EXTRACT(DAY FROM CAST(OrderDate AS DATE)) AS OrderDay,
-  EXTRACT(MONTH FROM CAST(OrderDate AS DATE)) AS OrderMonth,
-  EXTRACT(YEAR FROM CAST(OrderDate AS DATE)) AS OrderYear,
+  CAST(EXTRACT(DAY FROM CAST(OrderDate AS DATE)) AS INT) AS OrderDay,
+  CAST(EXTRACT(MONTH FROM CAST(OrderDate AS DATE)) AS INT) AS OrderMonth,
+  CAST(EXTRACT(YEAR FROM CAST(OrderDate AS DATE)) AS INT) AS OrderYear,
   Red,
   Green
 FROM
