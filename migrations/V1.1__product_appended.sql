@@ -20,7 +20,7 @@ SELECT
     "Discontinued" AS DISCONTINUED,
     "CategoryName" AS CATEGORYNAME,
     "Supplier" AS SUPPLIER
-FROM {{ config('materialized') == 'fresh' }} 
+FROM {{ this.materialized == 'fresh' }} 
     {{ adapter.dispatch.load('migrations/product_fresh.csv', temp_table='temp_product') }}
 ELSE
     SELECT * FROM temp_product;
