@@ -6,7 +6,7 @@ SELECT
   SUM(sed.revenue) as revenue
 FROM
   {{ref('stg_employee')}} se  
-  inner join {{ref('raw_orders')}} o  
+  inner join {{ref('stg_orders')}} o  
   ON se.employeeID = o.employeeID
   inner join {{ref('stg_order_detail')}} sed  
   ON o.orderID = sed.orderID

@@ -5,7 +5,7 @@ SELECT
   SUM(od.netSales) AS netSales
 FROM
   {{ref('stg_order_detail')}} od
-  INNER JOIN {{ref('raw_orders')}} o ON o.orderID = od.orderID
+  INNER JOIN {{ref('stg_orders')}} o ON o.orderID = od.orderID
   INNER JOIN {{ref('raw_employee')}} e ON e.employeeID = o.employeeID
   INNER JOIN {{ref('raw_employee_territory')}} et ON et.employeeID = e.employeeID
   INNER JOIN {{ref('raw_territory')}} rt ON rt.territoryID = et.territoryID

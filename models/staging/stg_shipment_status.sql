@@ -16,6 +16,6 @@ SELECT DISTINCT
     CASE WHEN DATEDIFF(days, ShippedDate, RequiredDate) > 7 THEN 1 ELSE 0 END AS Green
 
 FROM 
-    {{ ref('raw_orders') }} o 
+    {{ ref('stg_orders') }} o 
 INNER JOIN {{ref('raw_shipper')}} s ON o.ShipVia = s.shipperID
 INNER JOIN {{ref ('raw_customer')}} c ON c.customerID = o.customerID
