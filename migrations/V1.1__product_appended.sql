@@ -19,7 +19,7 @@ SELECT
     "CategoryName" AS CATEGORYNAME,
     "Supplier" AS SUPPLIER
 FROM
-    '/product_fresh.csv'; 
+    'migrations/product_fresh.csv'; 
 
 ALTER TABLE PRODUCT
 DROP COLUMN IF EXISTS
