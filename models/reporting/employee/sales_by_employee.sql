@@ -10,4 +10,4 @@ FROM
   ON se.employeeID = o.employeeID
   inner join {{ref('stg_order_detail')}} sed  
   ON o.orderID = sed.orderID
-GROUP BY se.employeeID, se.closed_orders_count
+GROUP BY se.employeeID

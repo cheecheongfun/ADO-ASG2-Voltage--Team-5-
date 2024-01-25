@@ -16,4 +16,3 @@ left join closed_orders_count as c
 on e.employeeID = c.employeeID
 
 
-
