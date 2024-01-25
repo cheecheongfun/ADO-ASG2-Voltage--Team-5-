@@ -1,4 +1,3 @@
--- Create or replace the temporary table
 CREATE OR REPLACE TEMPORARY TABLE temp_product (
     PRODUCTID NUMBER(38,0),
     PRODUCTNAME VARCHAR(40),
@@ -10,17 +9,17 @@ CREATE OR REPLACE TEMPORARY TABLE temp_product (
     UNIQUE (PRODUCTID)
 );
 
-
-INSERT INTO temp_product ("PRODUCTID", "PRODUCTNAME", "LISTPRICE", "UNITCOST", "DISCONTINUED", "CATEGORYNAME", "SUPPLIER")
+INSERT INTO temp_product (PRODUCTID, PRODUCTNAME, LISTPRICE, UNITCOST, DISCONTINUED, CATEGORYNAME, SUPPLIER)
 SELECT
-    "Product ID" AS "PRODUCTID",
-    "Product Name" AS "PRODUCTNAME",
-    "ListPrice" AS "LISTPRICE",
-    "UnitCost" AS "UNITCOST",
-    "Discontinued" AS "DISCONTINUED",
-    "CategoryName" AS "CATEGORYNAME",
-    "Supplier" AS "SUPPLIER"
+    "Product ID" AS PRODUCTID,
+    "Product Name" AS PRODUCTNAME,
+    "ListPrice" AS LISTPRICE,
+    "UnitCost" AS UNITCOST,
+    "Discontinued" AS DISCONTINUED,
+    "CategoryName" AS CATEGORYNAME,
+    "Supplier" AS SUPPLIER
 FROM @~/migrations/product_fresh.csv;
+
 
 
 -- Drop columns from PRODUCT table
