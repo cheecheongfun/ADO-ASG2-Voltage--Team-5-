@@ -19,8 +19,7 @@ SELECT
     CATEGORYNAME,
     SUPPLIER
 FROM
-    @migrations/product_fresh.csv;
-
+    @migrations/product_fresh.csv; -- Removed single quotes
 
 ALTER TABLE PRODUCT
 DROP COLUMN IF EXISTS
@@ -41,10 +40,10 @@ ADD COLUMN IF NOT EXISTS
 UPDATE PRODUCT
 SET
     PRODUCT.PRODUCTNAME = temp_product.PRODUCTNAME,
-    PRODUCT UNITCOST = temp_product.UNITCOST,
-    PRODUCT DISCONTINUED = temp_product.DISCONTINUED,
-    PRODUCT CATEGORYNAME = temp_product.CATEGORYNAME,
-    PRODUCT SUPPLIER = temp_product.SUPPLIER
+    PRODUCT.UNITCOST = temp_product.UNITCOST,
+    PRODUCT.DISCONTINUED = temp_product.DISCONTINUED,
+    PRODUCT.CATEGORYNAME = temp_product.CATEGORYNAME,
+    PRODUCT.SUPPLIER = temp_product.SUPPLIER
 FROM
     temp_product
 WHERE
