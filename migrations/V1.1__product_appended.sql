@@ -13,13 +13,13 @@ INSERT INTO temp_product
 SELECT
     "Product ID" AS PRODUCTID,
     "Product Name" AS PRODUCTNAME,
-    LISTPRICE,
-    UNITCOST,
-    DISCONTINUED,
-    CATEGORYNAME,
-    SUPPLIER
+    "ListPrice" AS LISTPRICE,
+    "UnitCost" AS UNITCOST,
+    "Discontinued" AS DISCONTINUED,
+    "CategoryName" AS CATEGORYNAME,
+    "Supplier" AS SUPPLIER
 FROM
-    'migrations/product_fresh.csv'; 
+    '/product_fresh.csv'; 
 
 ALTER TABLE PRODUCT
 DROP COLUMN IF EXISTS
