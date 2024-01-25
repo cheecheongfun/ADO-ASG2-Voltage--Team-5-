@@ -4,7 +4,7 @@ with closed_orders_count as (
     select
         employeeID,
         count(*) as closed_orders_count
-    from {{ ref('raw_orders') }}
+    from {{ ref('stg_orders') }}
     where shippedDate is not null
     group by employeeID
 )
