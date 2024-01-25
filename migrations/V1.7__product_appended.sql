@@ -11,15 +11,15 @@ CREATE OR REPLACE TEMPORARY TABLE temp_product (
 );
 
 
-INSERT INTO temp_product (PRODUCTID, PRODUCTNAME, LISTPRICE, UNITCOST, DISCONTINUED, CATEGORYNAME, SUPPLIER)
+INSERT INTO temp_product ("PRODUCTID", "PRODUCTNAME", "LISTPRICE", "UNITCOST", "DISCONTINUED", "CATEGORYNAME", "SUPPLIER")
 SELECT
-    "Product ID" AS PRODUCTID,
-    "Product Name" AS PRODUCTNAME,
-    "ListPrice" AS LISTPRICE,
-    "UnitCost" AS UNITCOST,
-    "Discontinued" AS DISCONTINUED,
-    "CategoryName" AS CATEGORYNAME,
-    "Supplier" AS SUPPLIER
+    "Product ID" AS "PRODUCTID",
+    "Product Name" AS "PRODUCTNAME",
+    "ListPrice" AS "LISTPRICE",
+    "UnitCost" AS "UNITCOST",
+    "Discontinued" AS "DISCONTINUED",
+    "CategoryName" AS "CATEGORYNAME",
+    "Supplier" AS "SUPPLIER"
 FROM @~/migrations/product_fresh.csv;
 
 
