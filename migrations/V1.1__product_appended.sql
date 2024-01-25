@@ -19,7 +19,7 @@ SELECT
     CATEGORYNAME,
     SUPPLIER
 FROM
-    migrations/product_fresh.csv; 
+    CURRENT_DIRECTORY() || 'product_fresh.csv';
 
 ALTER TABLE PRODUCT
 DROP COLUMN IF EXISTS
