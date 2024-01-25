@@ -24,6 +24,10 @@ jobs:
         uses: actions/setup-python@v2.2.1
         with:
           python-version: 3.8.x
+          
+      - name: Upgrade Snowflake Connector
+        run: |
+          python -m pip install --upgrade snowflake-connector-python
 
       - name: Download new Product CSV file
         run: |
