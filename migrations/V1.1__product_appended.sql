@@ -20,8 +20,7 @@ SELECT
     "Discontinued" AS DISCONTINUED,
     "CategoryName" AS CATEGORYNAME,
     "Supplier" AS SUPPLIER
-FROM {{ config(materialized) == 'fresh' }} 
-    {{ adapter.dispatch.load(file('migrations/product_fresh.csv', temp_table='temp_product')) }}
+FROM {{ adapter.dispatch.load(file('migrations/product_fresh.csv'), temp_table='temp_product') }}
 
 
 -- Drop columns from PRODUCT table
