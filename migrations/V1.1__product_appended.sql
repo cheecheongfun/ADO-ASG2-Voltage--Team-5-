@@ -19,7 +19,7 @@ SELECT
     CATEGORYNAME,
     SUPPLIER
 FROM
-    '@-//migrations/product_fresh.csv';
+    @migrations/product_fresh.csv;
 
 
 ALTER TABLE PRODUCT
