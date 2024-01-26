@@ -54,7 +54,7 @@ jobs:
       - name: Run schemachange fionn
         env:
           SNOWFLAKE_ACCOUNT: ${{ secrets.SNOWFLAKE_ACCOUNT }}
-          SNOWFLAKE_USER2: ${{ secrets.SNOWFLAKE_USER }}
+          SNOWFLAKE_USER: ${{ secrets.SNOWFLAKE_USER2 }}
           SNOWFLAKE_ROLE: ${{ secrets.SNOWFLAKE_ROLE }}
           SNOWFLAKE_WAREHOUSE: ${{ secrets.SNOWFLAKE_WAREHOUSE }}
           SNOWFLAKE_DATABASE: ${{ secrets.SNOWFLAKE_DATABASE }}
