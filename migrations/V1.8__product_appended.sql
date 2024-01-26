@@ -1,0 +1,46 @@
+CREATE OR REPLACE TEMPORARY TABLE temp_product (
+    "Product ID" NUMBER(38,0),
+    "Product Name" VARCHAR(40),
+    ListPrice FLOAT,
+    UnitCost FLOAT,
+    Discontinued VARCHAR(3),
+    CategoryName VARCHAR(15),
+    Supplier VARCHAR(30)
+);
+
+COPY INTO temp_product ("Product ID", "Product Name", ListPrice, UnitCost, Discontinued, CategoryName, Supplier)
+FROM @PRODUCT_FRESH/product_fresh.csv
+FILE_FORMAT = (TYPE = 'CSV' FIELD_OPTIONALLY_ENCLOSED_BY='"' SKIP_HEADER = 1);
+
+-- Drop columns from PRODUCT table
+ALTER TABLE PRODUCT
+DROP COLUMN IF EXISTS
+    SUPPLIERID,
+    CATEGORYID,
+    QUANTITYPERUNIT,
+    UNITSINSTOCK,
+    UNITSONORDER,
+    REORDERLEVEL,
+    DISCONTINUED;
+
+-- Rename UNITPRICE to LISTPRICE in PRODUCT table
+ALTER TABLE PRODUCT
+RENAME COLUMN UNITPRICE TO LISTPRICE;
+
+-- Add columns to PRODUCT table
+ALTER TABLE PRODUCT
+ADD COLUMN IF NOT EXISTS
+    UNITCOST FLOAT DEFAULT NULL,
+    DISCONTINUED VARCHAR(3) DEFAULT NULL,
+    CATEGORYNAME VARCHAR(15) DEFAULT NULL,
+    SUPPLIER VARCHAR(30) DEFAULT NULL;
+
+
+UPDATE PRODUCT p
+SET
+    p.PRODUCTNAME = (SELECT tp."Product Name" FROM temp_product tp WHERE p.PRODUCTID = tp."Product ID"),
+    p.UNITCOST = (SELECT tp.UNITCOST FROM temp_product tp WHERE p.PRODUCTID = tp."Product ID"),
+    p.DISCONTINUED = (SELECT tp.DISCONTINUED FROM temp_product tp WHERE p.PRODUCTID = tp."Product ID"),
+    p.CATEGORYNAME = (SELECT tp.CATEGORYNAME FROM temp_product tp WHERE p.PRODUCTID = tp.P"Product ID"),
+    p.SUPPLIER = (SELECT tp.SUPPLIER FROM temp_product tp WHERE p.PRODUCTID = tp."Product ID");
+
