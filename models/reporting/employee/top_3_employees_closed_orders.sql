@@ -1,9 +1,20 @@
+with closed_orders_count as (
+    select
+        employeeID,
+        count(*) as closed_orders_count
+    from {{ ref('stg_orders') }}
+    where shippedDate is not null
+    group by employeeID
+)
+
 SELECT TOP 3
-  employeeID,
-  SUM(closed_orders_count) as closed_orders_count
+  s.employeeID,
+  SUM(coc.closed_orders_count) as closed_orders_count
 FROM
-  {{ref('stg_employee')}} se
+  {{ref('raw_employee')}} s
+  left join closed_orders_count coc
+  ON coc.employeeID = s.employeeID
 GROUP BY
-    se.employeeID
+    s.employeeID, coc.closed_orders_count
 ORDER BY
-    closed_orders_count Desc
+    coc.closed_orders_count Desc
