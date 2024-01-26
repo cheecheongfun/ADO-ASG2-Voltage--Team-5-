@@ -12,3 +12,5 @@ FROM
   INNER JOIN {{ref('raw_region')}} r ON r.regionID = rt.regionID
 GROUP BY
     r.regionID, r.regionDescription
+
+--testing
