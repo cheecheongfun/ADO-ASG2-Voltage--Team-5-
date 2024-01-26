@@ -5,7 +5,7 @@ CREATE OR REPLACE TEMPORARY TABLE temp_product (
     UnitCost FLOAT,
     Discontinued VARCHAR(3),
     CategoryName VARCHAR(15),
-    Supplier VARCHAR(30)
+    Supplier VARCHAR(40)
 );
 
 COPY INTO temp_product ("Product ID", "Product Name", ListPrice, UnitCost, Discontinued, CategoryName, Supplier)
@@ -33,7 +33,7 @@ ADD COLUMN IF NOT EXISTS
     UNITCOST FLOAT DEFAULT NULL,
     DISCONTINUED VARCHAR(3) DEFAULT NULL,
     CATEGORYNAME VARCHAR(15) DEFAULT NULL,
-    SUPPLIER VARCHAR(30) DEFAULT NULL;
+    SUPPLIER VARCHAR(40) DEFAULT NULL;
 
 
 MERGE INTO PRODUCT AS p
