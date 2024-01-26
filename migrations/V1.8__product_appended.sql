@@ -41,6 +41,6 @@ SET
     p.PRODUCTNAME = (SELECT tp."Product Name" FROM temp_product tp WHERE p.PRODUCTID = tp."Product ID"),
     p.UNITCOST = (SELECT tp.UNITCOST FROM temp_product tp WHERE p.PRODUCTID = tp."Product ID"),
     p.DISCONTINUED = (SELECT tp.DISCONTINUED FROM temp_product tp WHERE p.PRODUCTID = tp."Product ID"),
-    p.CATEGORYNAME = (SELECT tp.CATEGORYNAME FROM temp_product tp WHERE p.PRODUCTID = tp.P"Product ID"),
+    p.CATEGORYNAME = (SELECT tp.CATEGORYNAME FROM temp_product tp WHERE p.PRODUCTID = tp."Product ID"),
     p.SUPPLIER = (SELECT tp.SUPPLIER FROM temp_product tp WHERE p.PRODUCTID = tp."Product ID");
 
