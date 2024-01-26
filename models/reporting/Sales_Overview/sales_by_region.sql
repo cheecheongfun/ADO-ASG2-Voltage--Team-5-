@@ -13,4 +13,3 @@ FROM
 GROUP BY
     r.regionID, r.regionDescription
 
---testing
