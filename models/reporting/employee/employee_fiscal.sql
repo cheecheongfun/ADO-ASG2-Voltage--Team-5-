@@ -26,7 +26,7 @@ SELECT
     fy.fiscal_year AS fiscal_year,
     fy.fiscal_quarter AS fiscal_quarter
 FROM
-    {{ ref('raw_employee') }} s 
+    {{ ref('stg_employee') }} s 
     INNER JOIN {{ ref('stg_orders') }} o ON s.employeeID = o.employeeID
     INNER JOIN {{ ref('stg_order_detail') }} sed ON o.orderID = sed.orderID
     INNER JOIN fiscal_year fy ON o.ORDERDATE = fy.ORDERDATE
