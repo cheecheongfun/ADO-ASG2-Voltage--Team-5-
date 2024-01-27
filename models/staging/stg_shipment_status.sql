@@ -11,7 +11,7 @@ SELECT DISTINCT
     s.CompanyName,
     RequiredDate,
     CASE WHEN RequiredDate < ShippedDate THEN 'Late' ELSE 'On-time' END AS Status,
-    DATEDIFF(days, OrderDate, ShippedDate) AS DaysToShip,
+    DATEDIFF(days, OrderDate, ShippedDate) AS ProccesingTime,
     CASE WHEN DATEDIFF(days, ShippedDate, RequiredDate) < 7 THEN 1 ELSE 0 END AS Red,
     CASE WHEN DATEDIFF(days, ShippedDate, RequiredDate) > 7 THEN 1 ELSE 0 END AS Green
 
