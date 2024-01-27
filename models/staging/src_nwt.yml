@@ -6,16 +6,31 @@ sources:
     schema: NWT
     tables:
       - name: CUSTOMER
+        description: details of customers in the database
+        columns: 
+          - name : address 
+            description :  address of customer 
+            tests : 
+            - not_null
       - name: REGION
+        description: table that stores region details 
       - name: ORDERS
       - name: ORDERDETAIL
+        description: Details of products of orders that have been placed
       - name: PRODUCT
+        description: details of products that is being sold in the company 
       - name: SHIPPER 
+        description: information of shipper companies that NWT works with 
       - name: SUPPLIER 
+        description: information of suppliers that NWT has 
       - name: TERRITORY 
+        description: details of territory 
       - name: CATEGORY 
+        description: information of different categories for the different products 
       - name: EMPLOYEE 
+        description: information of the employees iin NWT
       - name: EMPLOYEETERRITORY 
+        description: information of where the employees is based in NWT
       - name: ORDER_FRESH
         description: fresh orders to be appended into ORDERS table
         columns:
