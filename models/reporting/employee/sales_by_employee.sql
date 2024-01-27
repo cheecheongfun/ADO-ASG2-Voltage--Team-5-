@@ -1,28 +1,22 @@
-with closed_orders_count as (
-    select
+WITH closed_orders_count AS (
+    SELECT
         employeeID,
-        count(*) as closed_orders_count
-    from {{ ref('stg_orders') }}
-    where shippedDate is not null
-    group by employeeID
+        COUNT(*) AS closed_orders_count
+    FROM {{ ref('stg_orders') }}
+    WHERE shippedDate IS NOT NULL
+    GROUP BY employeeID
 )
 
 SELECT 
-  s.employeeID as employeeID,
-  coc.closed_orders_count as closed_orders_count,
-  SUM(sed.netSales) as netSales,
-  SUM(sed.quantity) as quantity,
-  SUM(sed.revenue) as revenue
+    s.employeeID AS employeeID,
+    coc.closed_orders_count AS closed_orders_count,
+    SUM(sed.netSales) AS netSales,
+    SUM(sed.quantity) AS quantity,
+    SUM(sed.revenue) AS revenue,
+    COUNT(DISTINCT o.customerID) AS number_of_customers
 FROM
-  {{ref('raw_employee')}} s 
-  left join closed_orders_count coc
-  ON coc.employeeID = s.employeeID
-  inner join {{ref('stg_orders')}} o  
-  ON coc.employeeID = o.employeeID
-  inner join {{ref('stg_order_detail')}} sed  
-  ON o.orderID = sed.orderID
+    {{ ref('raw_employee') }} s 
+    LEFT JOIN closed_orders_count coc ON coc.employeeID = s.employeeID
+    INNER JOIN {{ ref('stg_orders') }} o ON coc.employeeID = o.employeeID
+    INNER JOIN {{ ref('stg_order_detail') }} sed ON o.orderID = sed.orderID
 GROUP BY s.employeeID, coc.closed_orders_count
-
-
-
-
