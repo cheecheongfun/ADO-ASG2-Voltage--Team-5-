@@ -15,7 +15,7 @@ SELECT
     SUM(sed.revenue) AS revenue,
     COUNT(DISTINCT o.customerID) AS number_of_customers
 FROM
-    {{ ref('raw_employee') }} s 
+    {{ ref('stg_employee') }} s 
     LEFT JOIN closed_orders_count coc ON coc.employeeID = s.employeeID
     INNER JOIN {{ ref('stg_orders') }} o ON coc.employeeID = o.employeeID
     INNER JOIN {{ ref('stg_order_detail') }} sed ON o.orderID = sed.orderID
