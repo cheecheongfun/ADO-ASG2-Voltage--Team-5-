@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 SELECT TOP 10
     c.COUNTRY as COUNTRY,
     COUNT(DISTINCT o.ORDERID) as ClosedOrder,
@@ -15,3 +16,5 @@ ORDER BY
 
 
 
+=======
+>>>>>>> fc81a5fb93b3409a20c06cc99dba6fa6ff4a3aa1
