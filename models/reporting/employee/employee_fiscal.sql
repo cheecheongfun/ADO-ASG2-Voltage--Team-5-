@@ -1,12 +1,4 @@
-WITH closed_orders_count AS (
-    SELECT
-        employeeID,
-        COUNT(*) AS closed_orders_count
-    FROM {{ ref('stg_orders') }}
-    WHERE shippedDate IS NOT NULL
-    GROUP BY employeeID
-),
-fiscal_year AS (
+WITH fiscal_year AS (
     SELECT
         ORDERDATE,
         CASE
@@ -35,8 +27,8 @@ SELECT
     fy.fiscal_quarter AS fiscal_quarter
 FROM
     {{ ref('raw_employee') }} s 
-    LEFT JOIN closed_orders_count coc ON coc.employeeID = s.employeeID
-    INNER JOIN {{ ref('stg_orders') }} o ON coc.employeeID = o.employeeID
+    INNER JOIN {{ ref('stg_orders') }} o ON s.employeeID = o.employeeID
     INNER JOIN {{ ref('stg_order_detail') }} sed ON o.orderID = sed.orderID
     INNER JOIN fiscal_year fy ON o.ORDERDATE = fy.ORDERDATE
-GROUP BY s.employeeID, coc.closed_orders_count, o.orderDate, fy.fiscal_year, sed.orderID, fy.fiscal_quarter, sed.orderID, sed.netSales, sed.quantity, sed.profit, sed.profitMargin
+GROUP BY s.employeeID, o.orderDate, fy.fiscal_year, sed.orderID, fy.fiscal_quarter, 
+         sed.orderID, sed.netSales, sed.quantity, sed.profit, sed.profitMargin
