@@ -1,0 +1,34 @@
+UPDATE PRODUCT
+SET SUPPLIER =
+    CASE
+        WHEN SUPPLIER = $$Exotic Liquids$$ THEN $$Exotic Liquids$$
+        WHEN SUPPLIER = $$New Orleans Cajun Delight$$ THEN $$New Orleans Cajun Delights$$
+        WHEN SUPPLIER = $$Grandma Kelly's Homestead$$ THEN $$Grandma Kelly's Homestead$$
+        WHEN SUPPLIER = $$Tokyo Traders$$ THEN $$Tokyo Traders$$
+        WHEN SUPPLIER = $$Cooperativa de Quesos 'La$$ THEN $$Cooperativa de Quesos 'Las Cabras'$$
+        WHEN SUPPLIER = $$Mayumi's$$ THEN $$Mayumi's$$
+        WHEN SUPPLIER = $$Pavlova, Ltd.$$ THEN $$Pavlova Ltd.$$
+        WHEN SUPPLIER = $$Specialty Biscuits, Ltd.$$ THEN $$Specialty Biscuits Ltd.$$
+        WHEN SUPPLIER = $$PB AB$$ THEN $$PB KnÃ¤ckebrÃ¶d AB$$
+        WHEN SUPPLIER = $$Refrescos Americanas LTDA$$ THEN $$Refrescos Americanas LTDA$$
+        WHEN SUPPLIER = $$Heli GmbH & Co.$$ THEN $$Heli SÃ¼ÃŸwaren GmbH & Co. KG$$
+        WHEN SUPPLIER = $$Plutzer Lebensmittelgro$$ THEN $$Plutzer LebensmittelgroÃŸmÃ¤rkte AG$$
+        WHEN SUPPLIER = $$Nord-Ost-Fisch Handelsges$$ THEN $$Nord-Ost-Fisch Handelsgesellschaft mbH$$
+        WHEN SUPPLIER = $$Formaggi Fortini s.r.l.$$ THEN $$Formaggi Fortini s.r.l.$$
+        WHEN SUPPLIER = $$Norske Meierier$$ THEN $$Norske Meierier$$
+        WHEN SUPPLIER = $$Bigfoot Breweries$$ THEN $$Bigfoot Breweries$$
+        WHEN SUPPLIER = $$Svensk AB$$ THEN $$Svensk SjÃ¶fÃ¶da AB$$
+        WHEN SUPPLIER = $$Aux joyeux ecclésiastique$$ THEN $$Aux joyeux ecclÃ©siastiques$$
+        WHEN SUPPLIER = $$New England Seafood$$ THEN $$New England Seafood Cannery$$
+        WHEN SUPPLIER = $$Leka Trading$$ THEN $$Leka Trading$$
+        WHEN SUPPLIER = $$Lyngbysild$$ THEN $$Lyngbysild$$
+        WHEN SUPPLIER = $$Zaanse Snoepfabriek$$ THEN $$Zaanse Snoepfabriek$$
+        WHEN SUPPLIER = $$Karkki Oy$$ THEN $$Karkki Oy$$
+        WHEN SUPPLIER = $$G'day, Mate$$ THEN $$G'day Mate$$
+        WHEN SUPPLIER = $$Ma Maison$$ THEN $$Ma Maison$$
+        WHEN SUPPLIER = $$Pasta Buttini s.r.l.$$ THEN $$Pasta Buttini s.r.l.$$
+        WHEN SUPPLIER = $$Escargots Nouveaux$$ THEN $$Escargots Nouveaux$$
+        WHEN SUPPLIER = $$Gai paturage$$ THEN $$Gai pÃ¢turage$$
+        WHEN SUPPLIER = $$Forêts d'érables$$ THEN $$ForÃªts d'Ã©rables$$
+        ELSE SUPPLIER
+    END;

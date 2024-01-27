@@ -1,0 +1,54 @@
+CREATE OR REPLACE PROCEDURE readdata_proc(tname varchar, url varchar)
+RETURNS STRING
+LANGUAGE PYTHON
+RUNTIME_VERSION=3.8
+HANDLER = 'readdata'
+EXTERNAL_ACCESS_INTEGRATIONS = (external_access_int)
+PACKAGES = ('snowflake-snowpark-python', 'pandas', 'requests')
+AS
+$$
+import pandas as pd
+import requests
+
+def is_url_accessible(url):
+    try:
+        response = requests.head(url)
+        return response.status_code == 200
+    except requests.RequestException:
+        return False
+
+def readdata(session, TNAME, URL):
+    if not TNAME or not URL:
+        return f"Invalid input parameters for table {TNAME}"
+
+    if not is_url_accessible(URL):
+        return f"URL is not accessible for table {TNAME}"
+
+    try:
+        df = pd.read_csv(URL)
+        df.columns = df.columns.str.upper()
+        
+        session.write_pandas(df, TNAME, overwrite = False)
+
+        return 'Success'
+    except Exception as e:
+        # Log the error with the table name
+        return f"Error processing table {TNAME}: {e}"
+
+$$;
+
+--session.write_pandas(df, TNAME, auto_create_table=True, overwrite=True)
+
+CALL readdata_proc('PRODUCT', 'https://raw.githubusercontent.com/just4jc/Northwind-Traders-Dataset/main/product.csv');
+CALL readdata_proc('ORDER_FRESH', 'https://raw.githubusercontent.com/just4jc/Northwind-Traders-Dataset/main/order_fresh.csv');
+CALL readdata_proc('ORDERDETAIL_FRESH', 'https://raw.githubusercontent.com/just4jc/Northwind-Traders-Dataset/main/order_detail_fresh.csv');
+CALL readdata_proc('ORDERDETAIL', 'https://raw.githubusercontent.com/just4jc/Northwind-Traders-Dataset/main/order_detail.csv');
+CALL readdata_proc('SUPPLIER', 'https://raw.githubusercontent.com/just4jc/Northwind-Traders-Dataset/main/supplier.csv');
+CALL readdata_proc('EMPLOYEETERRITORY', 'https://raw.githubusercontent.com/just4jc/Northwind-Traders-Dataset/main/employee_territory.csv');
+CALL readdata_proc('TERRITORY', 'https://raw.githubusercontent.com/just4jc/Northwind-Traders-Dataset/main/territory.csv');
+CALL readdata_proc('REGION', 'https://raw.githubusercontent.com/just4jc/Northwind-Traders-Dataset/main/region.csv');
+CALL readdata_proc('CATEGORY', 'https://raw.githubusercontent.com/just4jc/Northwind-Traders-Dataset/main/category.csv');
+CALL readdata_proc('ORDERS', 'https://raw.githubusercontent.com/just4jc/Northwind-Traders-Dataset/main/order_updated.csv');
+CALL readdata_proc('EMPLOYEE', 'https://raw.githubusercontent.com/just4jc/Northwind-Traders-Dataset/main/employee.csv');
+CALL readdata_proc('CUSTOMER', 'https://raw.githubusercontent.com/just4jc/Northwind-Traders-Dataset/main/customer.csv');
+CALL readdata_proc('SHIPPER', 'https://raw.githubusercontent.com/just4jc/Northwind-Traders-Dataset/main/shipper.csv');

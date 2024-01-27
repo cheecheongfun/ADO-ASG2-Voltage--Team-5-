@@ -1,0 +1,13 @@
+Orignal Data,,,,Data loaded from pipeline,,
+TABLE_NAME,Number of rows,Number of distinct values,,TABLE_NAME,Number of rows,Number of distinct values of ID
+Category,16,8,,raw_category,16,8
+Customer,91,91,,raw_customer,91,91
+Employee,9,9,,raw_employee,9,9
+Employeeterritory,49,9,,raw_employee_territory,49,9
+Orderdetail,2062,800,,raw_order_details,2062,800
+Orders,830,800,,raw_orders,830,800
+Product,77,77,,raw_product,77,77
+Region,4,4,,raw_region,4,4
+Shipper,3,3,,raw_shipper,3,3
+Supplier,29,29,,raw_supplier,29,29
+Territory,53,53,,raw_territory,53,53
