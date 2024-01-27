@@ -3,7 +3,9 @@ SELECT
   c.companyName AS companyName,
   c.contactTitle AS contactTitle,
   p.categoryName AS categoryName,
-  ROUND(SUM(od.netSales), 1) AS TotalSales
+  ROUND(SUM(od.netSales), 1) AS TotalSales,
+  COUNT(o.orderId) AS TotalOrders,
+  SUM(od.profit) AS Profit
 FROM
   {{ ref('stg_customer') }} c
   INNER JOIN {{ ref('stg_orders') }} o ON c.customerID = o.customerID
