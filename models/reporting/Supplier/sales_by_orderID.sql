@@ -3,8 +3,9 @@ SELECT
     orderid,
     SUM(quantity) AS qty,
     SUM(Unitprice * quantity) AS Revenue ,
-    SUM(profit) as Profit
+    SUM(profit) as Profit,
+    profitMargin
 FROM 
     {{ ref ('stg_order_detail')}}
 GROUP BY 
-    orderid
+    orderid,profitMargin
