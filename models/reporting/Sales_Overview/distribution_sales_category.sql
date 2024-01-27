@@ -1,5 +1,6 @@
 SELECT 
     p.CATEGORYNAME AS CATEGORYNAME,
+    o.ORDERDATE AS ORDERDATE,
     COUNT(od.ORDERID) AS ORDERCOUNT,
     SUM(od.QUANTITY) AS QUANTITY,
     ROUND(SUM(od.REVENUE),1) as REVENUE,
@@ -7,6 +8,7 @@ SELECT
 FROM
     {{ref('raw_product')}} p
     INNER JOIN {{ref('stg_order_detail')}} od ON p.PRODUCTID = od.PRODUCTID
+    INNER JOIN {{ref('stg_orders')}} o ON od.ORDERID = o.ORDERID
 GROUP BY
-    p.CATEGORYNAME
+    p.CATEGORYNAME, o.ORDERDATE
  
