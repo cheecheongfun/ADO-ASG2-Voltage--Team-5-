@@ -5,5 +5,5 @@ select orderID,
     red,
     green, 
     shipcountry,
-    DaysToShip AS ProcessingTime
+    ProccesingTime 
 from {{ref('stg_shipment_status')}} 
