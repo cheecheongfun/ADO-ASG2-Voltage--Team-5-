@@ -1,6 +1,7 @@
 SELECT
     ods.ORDERID,
     ods.DISCOUNT,
+    ods.ORDERDATE,
     p.PRODUCTNAME,
     p.SUPPLIER,
     ods.REVENUE AS REVENUE,
