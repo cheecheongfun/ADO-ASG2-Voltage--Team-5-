@@ -7,7 +7,8 @@ SELECT
     ROUND(SUM(od.NETSALES),1) as NETSALES,
     ROUND(SUM(od.REVENUE),1) as REVENUE,
     ROUND(SUM(od.PROFIT),1) as PROFIT,
-    SUM(od.QUANTITY) as QUANTITY
+    SUM(od.QUANTITY) as QUANTITY,
+    AVG(od.PROFITMARGIN) AS GROSSPROFITMARGIN
 FROM
     {{ref ('stg_orders')}} o
     INNER JOIN {{ref ('stg_order_detail')}} od ON o.ORDERID = od.ORDERID
