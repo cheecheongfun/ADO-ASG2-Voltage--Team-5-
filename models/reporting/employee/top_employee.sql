@@ -5,8 +5,11 @@ se.hiredate,
 se.homephone,
 se.reportsTo,
 sc.address,
+sc.customerID,
 p.productID,
-p.categoryName
+p.productname,
+p.categoryName,
+sod.netSales
 from 
 {{ref("stg_employee")}} se INNER JOIN {{ref("stg_orders")}} so
 ON se.employeeID = so.employeeID
