@@ -6,6 +6,7 @@ SELECT
     o.ORDERYEAR as ORDERYEAR,
     ROUND(SUM(od.NETSALES),1) as NETSALES,
     ROUND(SUM(od.REVENUE),1) as REVENUE,
+    ROUND(SUM(od.PROFIT),1) as PROFIT,
     SUM(od.QUANTITY) as QUANTITY
 FROM
     {{ref ('stg_orders')}} o
