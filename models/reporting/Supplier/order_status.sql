@@ -3,7 +3,7 @@ SELECT
   shipcountry AS Country,
   CompanyName AS Courier,
   Status,
-  ROUND(Daystoship) AS ProcessingTime,
+  ProccesingTime,
   DATE_PART(DAY, orderDate) as orderDay,
   DATE_PART(Month, orderDate) as orderMonth,
   DATE_PART(Year, orderDate) as orderYear,
