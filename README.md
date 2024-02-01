@@ -1,2 +1,2 @@
 # ASG2
- i hatet his mod
+Note: PowerBI files cannot be opened due to deletion of Snowflake environment they are connected to.
